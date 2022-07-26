@@ -62,8 +62,8 @@ def response(user_input):
     tfidf = TfidVec.fit_transform(sentences)
     vals = cosine_similarity(tfidf[-1], tfidf)
     idx = vals.argsort()[0][-2]
-    flat = vals.flatten()
-    flat.sort()
+    flatz = vals.flatten()
+    flatz.sort()
     req_tfidf = flat[-2]
     if (req_tfidf==0):
         boto_response = boto_response+"Could you rephrase? Remember I talk only about Vector"
