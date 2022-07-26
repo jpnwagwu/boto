@@ -12,8 +12,7 @@ import string
 import io
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-#import warnings
-#warnings.filterwarnings('ignore')
+
 
 
 # In[11]:
@@ -33,47 +32,24 @@ sentences = nltk.sent_tokenize(data)
 words = nltk.word_tokenize(data)
 
 
-# In[13]:
-
-
-sentences[:3]
-
-
-# In[14]:
-
-
-words[:3]
-
-
-# In[15]:
-
-
-#Extracting root words with meanings
-lemma = nltk.stem.WordNetLemmatizer()
-
-def LemmaTokens(tokens):
-    return [lemma.lemmatize(token) for token in tokens]
-
-#Remove noise and stop words
-remove_punct_dict = dict((ord(punct), None) for punct in string.punctuation)
-
+#Extracting root words with meanings 
 #Lemmatize and remove stop words and noise
 def LemmaNormalize(word):
-    return LemmaTokens(nltk.word_tokenize(word.lower().translate(remove_punct_dict)))
+    return LemmaTokens(nltk.word_tokenize(word.lower().translate(dict((ord(punct), None) for punct in string.punctuation))))
 
 
 # In[16]:
 
 
 #Greetings 
-input_greetings = ("hello", "greetings", "hi", "sup", "what's up", "hey", "Good Morning", "Good Afternoon", "Good Evening", "How are you" )
-output_greetings = ["hi", "hey", "hi there", "I'm glad you are talking to me"]
+inputz = ("Good Morning", "Good Afternoon", "Good Evening", "How are you","hello", "greetings", "hi", "sup", "what's up", "hey"  )
+outputz = ["hi", "hey", "hi there", "Nice to meet you"]
 
 #returns Greetings if word is present in list of input greetings
 def greeting(sentence):
     for word in sentence.split():
-        if word.lower() in input_greetings:
-            return random.choice(output_greetings)
+        if word.lower() in inputz:
+            return random.choice(outputz)
 
 
 # In[17]:
