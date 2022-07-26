@@ -104,19 +104,19 @@ def response(user_input):
 marker=True
 print("BOTO: My name is Boto. I will answer your queries about Vector. If you want to exit, type Goodbye")
 while (marker==True):
-    user_response = input()
-    user_response = user_response.lower()
-    if (user_response != 'goodbye'):
-        if (user_response=='thanks' or user_response =='thank you'):
+    user_input = input()
+    user_input = user_input.lower()
+    if (user_input != 'goodbye'):
+        if (user_input=='thanks' or user_input =='thank you'):
             marker=False
             print("BOTO: You are welcome..")
         else:
-            if greeting(user_response)!=None:
-                print("BOTO: "+greeting(user_response))
+            if greeting(user_input)!=None:
+                print("BOTO: "+greeting(user_input))
             else:
                 print("BOTO: ", end="")
-                print(response(user_response))
-                sentences.remove(user_response)
+                print(response(user_input))
+                sentences.remove(user_input)
     else:
         marker=False
         print("BOTO: Bye! Have a great day ")
