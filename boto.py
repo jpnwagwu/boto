@@ -33,6 +33,11 @@ words = nltk.word_tokenize(data)
 
 
 #Extracting root words with meanings 
+lemma = nltk.stem.WordNetLemmatizer()
+
+def LemmaTokens(tokens):
+    return [lemma.lemmatize(token) for token in tokens]
+
 #Lemmatize and remove stop words and noise
 def LemmaNormalize(word):
     return LemmaTokens(nltk.word_tokenize(word.lower().translate(dict((ord(punct), None) for punct in string.punctuation))))
